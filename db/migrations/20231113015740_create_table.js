@@ -2,13 +2,13 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema.createTable("disney", function (table) {
-    table.integer("id").primary();
+    table.increments("id").primary();
     table.string("name", 128).notNullable();
     table.string("imageUrl", 512);
-    table.datetime("createdAt", {useTz: false}).notNullable();
-    table.datetime("updatedAt", {useTz: false}).notNullable();
+    table.datetime("createdAt", { useTz: false }).defaultTo(knex.fn.now());
+    table.datetime("updatedAt", { useTz: false }).defaultTo(knex.fn.now());
   });
 };
 
@@ -16,6 +16,6 @@ exports.up = function(knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function(knex) {
-    knex.schema.dropTable("disney");
+exports.down = function (knex) {
+  knex.schema.dropTable("disney");
 };

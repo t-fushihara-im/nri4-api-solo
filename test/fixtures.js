@@ -1,12 +1,12 @@
 module.exports = {
   getCharacter() {
     return {
-      id: 4704,
-      name: "test_character",
+      id: 9999,
+      name: "Stitch",
       imageUrl:
-        "https://static.wikia.nocookie.net/disney/images/test_character.jpg",
-      createdAt: "2023-11-13T02:33:01.829Z",
-      updatedAt: "2021-11-13T20:40:04.583Z",
+        "https://static.wikia.nocookie.net/disney/images/a/a8/Profile_-_Stitch.jpeg",
+      // createdAt: "2021-04-12T02:57:09.472Z",
+      // updatedAt: "2021-12-20T20:40:22.222Z",
     };
   },
 };
