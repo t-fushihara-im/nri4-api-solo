@@ -11,7 +11,19 @@ module.exports = {
     return knex.select().from(domain.DISNEY_TABLE).where({ id: id }).first();
   },
 
-  createCharacter(charInfo){
-    return "undefined";
-  }
+  createCharacter(character) {
+    return knex(domain.DISNEY_TABLE).insert(character).returning("*");
+  },
+
+  updateCharacter(id, character) {
+    character["updatedAt"] = new Date();
+    return knex(domain.DISNEY_TABLE)
+      .where("id", "=", id)
+      .update(character)
+      .returning("*");
+  },
+
+  deleteCharacter(id) {
+    return knex(domain.DISNEY_TABLE).where("id", "=", id).returning("*").del();
+  },
 };
