@@ -1,10 +1,12 @@
 const express = require("express");
 const model = require("./model");
+const cors = require("cors");
 
 const setupServer = () => {
   const app = express();
   app.use(express.json());
   app.use(express.text());
+  app.use(cors());
 
   app.get("/characters", async (req, res) => {
     const results = await model.getAllCharacters();
